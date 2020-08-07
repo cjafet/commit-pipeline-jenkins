@@ -1,7 +1,7 @@
 # Copy an empty repo
 git clone --no-checkout https://github.com/cjafet/commit-pipeline-jenkins.git
 
-# Move into the empty dir
+# Move into the policy dir
 cd policy
 
 # Initialize sparse-checkout
