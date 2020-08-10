@@ -1,5 +1,5 @@
 {
-    "configMapName": "nome do configmap",
+    "configMapName": "nome do configmap policy b",
     "namespace": "namespace",
     "data": {
         "data.json": "{}",
