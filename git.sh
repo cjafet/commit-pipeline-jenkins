@@ -4,7 +4,7 @@ rm -rf
 git clone --no-checkout https://github.com/cjafet/commit-pipeline-jenkins.git .
 
 # Move into the policy directory
-cd policy
+cd commit-pipeline-jenkins/policy
 
 # Initialize sparse-checkout
 git sparse-checkout init --cone
