@@ -1,17 +1,19 @@
+
 pipeline {
     agent any
-    triggers {
-        pollSCM('H/5 * * * *')
-    }
+    // plugins {
+    //     id "org.sonarqube" version "2.7"
+    // }
     stages {
         stage('Repository') {
             steps {
-                git 'https://github.com/cjafet/commit-pipeline-jenkins.git'
+                // git 'https://github.com/cjafet/commit-pipeline-jenkins.git'
+                sh '"$JENKINS_HOME/workspace/$JOB_NAME/git-ck-head-arg.sh" policy' 
             }
         }
         stage('PutRequest') {
             steps {
-                sh 'chmod +x "$JENKINS_HOME/workspace/$JOB_NAME/run.sh"'
+                //sh 'chmod +x "$JENKINS_HOME/workspace/$JOB_NAME/run.sh"'
                 sh '"$JENKINS_HOME/workspace/$JOB_NAME/run.sh"'
             }
         }
