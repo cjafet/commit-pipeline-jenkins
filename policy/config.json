@@ -1,5 +1,5 @@
 {
-    "configMapName": "nome do configmap",
+    "configMapName": "on-premise nome do configmap",
     "namespace": "namespace",
     "data": {
         "data.json": "{}",
