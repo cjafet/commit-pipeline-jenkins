@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# remove any policy directories
 rm -rf policy policy_b
 
 # get policy directory
