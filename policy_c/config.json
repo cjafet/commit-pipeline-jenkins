@@ -1,0 +1,9 @@
+{
+    "configMapName": "on-premise do configmap policy c",
+    "namespace": "namespace",
+    "data": {
+        "data.json": "{}",
+        "validate-profile.rego": "package security\n\ndefault allow = false\n",
+        "config-policy.json": {"namespace":"on-premise","regoRules":["allow"],"regoQueryName":"security"}
+    }
+} 
