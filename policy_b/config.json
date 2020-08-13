@@ -1,9 +1,9 @@
 {
-    "configMapName": "on-premise do configmap policy b",
-    "namespace": "namespace",
+    "configMapName": "on-premise-balance-service-security",
+    "namespace": "on-premise",
     "data": {
-        "data.json": "{}",
-        "validate-profile.rego": "package security\n\ndefault allow = false\n",
-        "config-policy.json": {"namespace":"on-premise","regoRules":["allow"],"regoQueryName":"security"}
-    }
-} 
+          "data.json": "{}",
+          "config-policy.json": "{ \"namespace\": \"on-premise\", \"regoRules\": [\"allow\"], \"regoQueryName\": \"bank.balance.service\" }",
+          "validate-profile.rego": "package bank.balance.service\n \n import input.attributes.request.http as http_request\n \n default allow = false\n \n allow {\n \tis_token_valid\n \taction_allowed\n }\n \n token = encoded {\n \t[_, encoded] := split(http_request.headers.authorization, \" \")\n }\n \n decoded_token = payload {\n \t[_, payload, _] := io.jwt.decode(token)\n }\n \n scopes = splitted_scopes {\n \tsplitted_scopes := split(decoded_token.scope, \" \")\n }\n \n is_token_valid {\n \tsecret := \"123\"\n \tio.jwt.verify_hs256(token, secret)\n \tnow := time.now_ns() / 1000000000\n \tnow < decoded_token.exp\n \tdecoded_token.aud[_] == \"balance-service\"\n }\n \n action_allowed {\n \thttp_request.method == \"GET\"\n \tglob.match(\"/balances*\", [], http_request.path)\n \tscopes[_] == \"read\"\n }\n \n action_allowed {\n \thttp_request.method == \"PUT\"\n \tglob.match(\"/balances*\", [], http_request.path)\n \tscopes[_] == \"write\"\n }\n \n"
+        }
+}
