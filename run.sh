@@ -1,10 +1,10 @@
 #!/bin/sh
-datajson=`cat policy/data.json`
-validateprofile=`cat policy/validate-profile.rego`
-configpolicy=`cat policy/config-policy.json`
+datajson=`cat data.json`
+validateprofile=`cat validate-profile.rego`
+configpolicy=`cat config-policy.json`
 
-namespace=echo jq '.namespace' policy/config-policy.json | sed 's/\"//'
-query=echo jq '.regoQueryName' policy/config-policy.json | sed 's/\"//'
+namespace=echo jq '.namespace' config-policy.json | sed 's/\"//'
+query=echo jq '.regoQueryName' config-policy.json | sed 's/\"//'
 
 
 payload='{
