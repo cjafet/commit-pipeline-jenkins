@@ -24,12 +24,19 @@ pipeline {
             }
         }
 
+        stage('OPA Coverage') {
+            steps {
+                sh 'opa test . -c -m 1 --threshold 100.0'
+            }
+        }
+
         stage('PutRequest') {
             steps {
                 //sh 'chmod +x "$JENKINS_HOME/workspace/$JOB_NAME/run.sh"'
                 sh '"$JENKINS_HOME/workspace/$JOB_NAME/run.sh"'
             }
         }
+
     }
     post {
         failure {
