@@ -3,16 +3,16 @@ datajson=`cat data.json`
 validateprofile=`cat validate-profile.rego`
 configpolicy=`cat config-policy.json`
 
-namespace=echo jq '.namespace' config-policy.json | sed 's/\"//'
-query=echo jq '.regoQueryName' config-policy.json | sed 's/\"//'
+namespace=$(jq '.namespace' config-policy.json | sed 's/\"//g')
+query=$(jq '.regoQueryName' config-policy.json | sed 's/\"//g')
 
 
 payload='{
     "configMapName": '"${namespace}.${query}"',
     "namespace": '"${query}"',
     "data": {
-          "data.json": "'${datajson}'",
-          "config-policy.json": "'${configpolicy}'",
+          "data.json": '${datajson}',
+          "config-policy.json": '${configpolicy}',
           "validate-profile.rego": "'${validateprofile}'"
         }
 }'
