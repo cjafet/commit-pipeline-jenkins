@@ -23,6 +23,12 @@ pipeline {
                 sh 'opa check .'
             }
         }
+
+        stage('Test OPA') {
+            steps {
+               sh 'opa test . -m 1 -v'
+            }
+        }
     }
     post {
         failure {
