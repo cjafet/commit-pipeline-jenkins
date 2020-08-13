@@ -1,9 +1,9 @@
 {
-    "configMapName": "on-premise do configmap a",
-    "namespace": "namespace",
+    "configMapName": "on-premise-balance-service-security",
+    "namespace": "on-premise",
     "data": {
-        "data.json": "{}",
-        "validate-profile.rego": "package security\n\ndefault allow = false\n",
-        "config-policy.json": {"namespace":"on-premise","regoRules":["allow"],"regoQueryName":"security"}
-    }
-} 
+          "data.json": "{}",
+          "config-policy.json": "{\"namespace\": \"on-premise\",\"regoRules\": [\"allow\"],\"regoQueryName\": \"security\"}",
+          "validate-profile.rego": "package security\n\ndefault allow = false\n"
+        }
+}
