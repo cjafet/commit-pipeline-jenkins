@@ -4,6 +4,6 @@
     "data": {
           "data.json": "{}",
           "config-policy.json": "{\"namespace\": \"on-premise\",\"regoRules\": [\"allow\"],\"regoQueryName\": \"security\"}",
-          "validate-profile.rego": "package security\n\ndefault allow = false\n"
+          "validate-profile.rego": "package security\n\ndefault allow = true\n"
         }
 }
