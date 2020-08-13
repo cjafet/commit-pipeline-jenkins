@@ -17,6 +17,12 @@ pipeline {
                 sh '"$JENKINS_HOME/workspace/$JOB_NAME/run.sh"'
             }
         }
+
+        stage('Check OPA') {
+            steps {
+                sh 'opa check .'
+            }
+        }
     }
     post {
         failure {
