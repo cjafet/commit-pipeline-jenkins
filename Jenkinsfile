@@ -8,7 +8,7 @@ pipeline {
         stage('Repository') {
             steps {
                 // git 'https://github.com/cjafet/commit-pipeline-jenkins.git'
-                sh '"$JENKINS_HOME/workspace/$JOB_NAME/git-ck-head-arg.sh" policy_c' 
+                sh '"$JENKINS_HOME/workspace/$JOB_NAME/git-ck-head-arg.sh" policy' 
             }
         }
         stage('PutRequest') {
