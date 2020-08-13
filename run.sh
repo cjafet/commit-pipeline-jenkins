@@ -13,7 +13,7 @@ payload='{
     "data": {
           "data.json": '${datajson}',
           "config-policy.json": '${configpolicy}',
-          "validate-profile.rego": '${validateprofile}'
+          "validate-profile.rego": "'${validateprofile}'"
         }
 }'
 
