@@ -11,8 +11,8 @@ payload='{
     "configMapName": '"${namespace}.${query}"',
     "namespace": '"${query}"',
     "data": {
-          "data.json": '${datajson}',
-          "config-policy.json": '${configpolicy}',
+          "data.json": "'${datajson}'",
+          "config-policy.json": "'${configpolicy}'",
           "validate-profile.rego": "'${validateprofile}'"
         }
 }'
