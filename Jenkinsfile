@@ -11,12 +11,6 @@ pipeline {
                 sh '"$JENKINS_HOME/workspace/$JOB_NAME/git-ck-head-arg.sh" policy' 
             }
         }
-        stage('PutRequest') {
-            steps {
-                //sh 'chmod +x "$JENKINS_HOME/workspace/$JOB_NAME/run.sh"'
-                sh '"$JENKINS_HOME/workspace/$JOB_NAME/run.sh"'
-            }
-        }
 
         stage('Check OPA') {
             steps {
@@ -27,6 +21,13 @@ pipeline {
         stage('Test OPA') {
             steps {
                sh 'opa test . -m 1 -v'
+            }
+        }
+
+        stage('PutRequest') {
+            steps {
+                //sh 'chmod +x "$JENKINS_HOME/workspace/$JOB_NAME/run.sh"'
+                sh '"$JENKINS_HOME/workspace/$JOB_NAME/run.sh"'
             }
         }
     }
